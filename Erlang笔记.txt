@@ -1,0 +1,79 @@
+作者 fx
+
+erlang笔记
+erlang:statistics(run_queue).         队列中多少个进程，有多少进程在等待 
+
+erlang:statistics(online_schedulers). 可用调度器数
+
+设置16个调度器，8个可用调度器  可用调度器一般于cpu核数一样
+
+erl +S 16:8 
+
+erl -smp +s N
+                                                 
+可用调度器可以修改
+
+erlang:system_info(schedulers).            	%% => returns 16 Erlang
+erlang:system_info(schedulers_online).     	%% => returns 8
+erlang:system_flag(schedulers_online,16).
+erlang:system_info(schedulers_online).     	%% => returns 16
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
