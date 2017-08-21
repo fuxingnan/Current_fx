@@ -1,3 +1,11 @@
+﻿　　
+
+第1卷 Elang笔记
+
+　　
+
+第1章 erlang 调度器
+
 作者 fx
 
 erlang笔记
@@ -17,63 +25,3 @@ erlang:system_info(schedulers).            	%% => returns 16 Erlang
 erlang:system_info(schedulers_online).     	%% => returns 8
 erlang:system_flag(schedulers_online,16).
 erlang:system_info(schedulers_online).     	%% => returns 16
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
