@@ -1,7 +1,26 @@
+﻿　　
+
+第1卷 网站
+
+　　
+
+第1章 常用网站
+
 
 作者fx
 2017年8月18日
 
 实用工具
 
-https://fir.im         内网测试安装网址
+
+内网测试安装网址
+https://fir.im        
+
+
+苹果内购流程　　
+http://www.cnblogs.com/TheYouth/p/6847014.html?utm_source=itdadao&utm_medium=referral
+
+　　
+ios AppIcon 生成工具
+
+https://appiconizer.com/
