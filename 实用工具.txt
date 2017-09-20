@@ -23,4 +23,4 @@ http://www.cnblogs.com/TheYouth/p/6847014.html?utm_source=itdadao&utm_medium=ref
 　　
 ios AppIcon 生成工具
 
-https://appiconizer.com/
+http://icon.wuruihong.com/
