@@ -1,0 +1,96 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'AndResGuard'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.3'
+    }
+}
+android {
+    def configuration = rootProject.ext
+    compileSdkVersion configuration.compileSdkVersion
+    buildToolsVersion configuration.buildToolsVersion
+    defaultConfig {
+        applicationId configuration.applicationId
+        minSdkVersion configuration.minSdkVersion
+        targetSdkVersion configuration.targetSdkVersion
+        versionCode configuration.versionCode
+        versionName configuration.versionName
+        testInstrumentationRunner configuration.testInstrumentationRunner
+    }
+    signingConfigs {
+        releaseConfig {
+            keyAlias 'deepcleaner'
+            keyPassword 'deepcleaner'
+            storeFile file('../DeepCleanerKeyStore.jks')
+            storePassword 'deepcleaner'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    def commonDependencies = rootProject.ext.commonDependencies
+    def presentationDependencies = rootProject.ext.presentationDependencies
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile commonDependencies.kotlin
+    compile 'com.google.firebase:firebase-core:10.2.4'
+    compile 'com.facebook.android:audience-network-sdk:4.+'
+    compile 'com.google.android.gms:play-services-ads:10.2.4'
+    compile 'com.google.android.gms:play-services-ads-lite:10.2.4'
+
+
+    compile presentationDependencies.v4
+    compile presentationDependencies.v7
+    compile presentationDependencies.design
+    compile presentationDependencies.anko
+    compile presentationDependencies.ankoV4
+    compile presentationDependencies.ankoV7
+    compile presentationDependencies.ankoDesign
+    compile presentationDependencies.ankoRecycler
+    compile presentationDependencies.constraint
+    compile presentationDependencies.lottie
+    compile commonDependencies.firebaseAD
+}
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'com.google.gms.google-services'
+
+andResGuard {
+    mappingFile = null
+    use7zip = true
+    useSign = true
+    // 打开这个开关，会keep住所有资源的原始路径，只混淆资源的名字
+    keepRoot = false
+    compressFilePattern = [
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+            "resources.arsc"
+    ]
+    sevenzip {
+          artifact = 'com.tencent.mm:SevenZip:1.2.3'
+    }
+}
